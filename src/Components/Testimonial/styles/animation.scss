@@ -1,0 +1,84 @@
+$anim-duration: 0.25s;
+
+@mixin animations() {
+    &.left-to-right {
+        animation-name: left-to-right;
+    }
+
+    &.right-to-left {
+        animation-name: right-to-left;
+    }
+
+    animation-fill-mode: forwards;
+    animation-duration: $anim-duration;
+}
+
+section.testimonial {
+    width: 100%;
+
+    display: flex;
+    overflow: hidden;
+    animation-duration: 4 * $anim-duration;
+
+    &.left-to-right {
+        flex-direction: row-reverse;
+    }
+
+    &.right-to-left {
+        flex-direction: row;
+    }
+
+    &.animate {
+        &.left-to-right {
+            animation-name: container-left-to-right;
+        }
+
+        &.right-to-left {
+            animation-name: container-right-to-left;
+        }
+    }
+}
+
+@keyframes container-left-to-right {
+    0% {
+        flex-direction: row-reverse;
+    }
+    100% {
+        flex-direction: row;
+    }
+}
+
+@keyframes container-right-to-left {
+    0% {
+        flex-direction: row;
+    }
+    100% {
+        flex-direction: row-reverse;
+    }
+}
+
+@keyframes left-to-right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes right-to-left {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.animate.out {
+    @include animations();
+}
+
+.animate.in {
+    @include animations();
+}

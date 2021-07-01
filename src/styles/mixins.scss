@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin on-lg-screen() {
+    @media (min-width: map-get($map: $grid-breakpoints, $key: "lg")) {
+        @content;
+    }
+}
+
+@mixin on-md-screen() {
+    @media (min-width: map-get($map: $grid-breakpoints, $key: "md")) {
+        @content;
+    }
+}
+
+@mixin on-sm-screen() {
+    @media (min-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+        @content;
+    }
+}
